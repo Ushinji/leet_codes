@@ -141,3 +141,6 @@ build-iPhoneSimulator/
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,c++,vscode,ruby
+.envrc
+.env
+.dotenv
