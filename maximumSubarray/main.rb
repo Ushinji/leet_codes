@@ -9,22 +9,23 @@ self.assertions = 0
 
 def max_crossing_sum(nums, start, middle, last)
   sum = 0
-  left_sum = nil
+  left_sum = -2147483648
   i = middle
   while start - 1 < i
     sum += nums[i]
-    left_sum = sum if left_sum.nil? || sum > left_sum
+    left_sum = sum if sum > left_sum
     i -= 1
   end
 
   sum = 0
-  right_sum = nil
+  right_sum = -2147483648
   i = middle + 1
-  while i < last
+  while i <= last
     sum += nums[i]
     right_sum = sum if sum > right_sum
     i += 1
   end
+
   [left_sum + right_sum, left_sum, right_sum].max
 end
 
@@ -48,5 +49,4 @@ def max_sub_array(nums)
   max_sub_array_sum(nums, 0, nums.size - 1)
 end
 
-puts max_sub_array([-2, 1, -3, 4, -1, 2, 1, -5, 4])
-
+puts max_sub_array([8, -19, 5, -4, 20])
