@@ -8,17 +8,21 @@ self.assertions = 0
 
 def max_crossing_sum(nums, start, middle, last)
   sum = 0
-  left_sum = -10000
-  (start..middle).each do |i|
+  left_sum = nil
+  i = middle
+  while(start -1 < i)
     sum = sum + nums[i]
-    left_sum = sum if sum > left_sum
+    left_sum = sum if left_sum.nil? || sum > left_sum
+    i -= 1
   end
 
   sum = 0
-  right_sum = -1000
-  (middle+1..last).each do |i|
+  right_sum = nil
+  i = middle + 1
+  while(i < last)
     sum = sum + nums[i]
-    right_sum = sum if sum > left_sum
+    right_sum = sum if sum > right_sum
+    i += 1
   end
   [left_sum+right_sum, left_sum, right_sum].max
 end
